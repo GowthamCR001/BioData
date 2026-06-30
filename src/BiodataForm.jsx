@@ -1,6 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Cropper from 'react-easy-crop';
 import CustomDropdown from './CustomDropdown';
+import { getCroppedImg } from './cropImage';
 import './BiodataForm.css';
 
 const generateHeights = () => {
@@ -51,20 +53,48 @@ function BiodataForm() {
   const [familyFields, setFamilyFields] = useState(initialFamilyFields);
   const [contactFields, setContactFields] = useState(initialContactFields);
   const [photoUrl, setPhotoUrl] = useState(null);
+  const [rawPhotoUrl, setRawPhotoUrl] = useState(null);
+  const [showCropper, setShowCropper] = useState(false);
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+
   const fileInputRef = useRef(null);
 
   const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const url = URL.createObjectURL(file);
-      setPhotoUrl(url);
+      setRawPhotoUrl(url);
+      setShowCropper(true);
+    }
+  };
+
+  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+    setCroppedAreaPixels(croppedAreaPixels);
+  }, []);
+
+  const saveCrop = async () => {
+    try {
+      const croppedImage = await getCroppedImg(rawPhotoUrl, croppedAreaPixels);
+      setPhotoUrl(croppedImage);
+      setShowCropper(false);
+    } catch (e) {
+      console.error(e);
     }
   };
 
   const triggerFileInput = () => {
-    if (fileInputRef.current) {
+    if (fileInputRef.current && !photoUrl) {
       fileInputRef.current.click();
     }
+  };
+
+  const removePhoto = (e) => {
+    e.stopPropagation();
+    setPhotoUrl(null);
+    setRawPhotoUrl(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
   const moveField = (fields, setFields, index, direction) => {
@@ -205,7 +235,10 @@ function BiodataForm() {
               />
               <div className="photo-upload-box" onClick={triggerFileInput}>
                 {photoUrl ? (
-                  <img src={photoUrl} alt="Uploaded profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <>
+                    <img src={photoUrl} alt="Uploaded profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <button className="btn-remove-photo" onClick={removePhoto} title="Remove Photo">✕</button>
+                  </>
                 ) : (
                   <>
                     <div className="upload-icon">📎</div>
@@ -225,6 +258,28 @@ function BiodataForm() {
 
         </div>
       </div>
+
+      {showCropper && (
+        <div className="cropper-modal-overlay">
+          <div className="cropper-modal">
+            <div className="cropper-container">
+              <Cropper
+                image={rawPhotoUrl}
+                crop={crop}
+                zoom={zoom}
+                aspect={3 / 4}
+                onCropChange={setCrop}
+                onCropComplete={onCropComplete}
+                onZoomChange={setZoom}
+              />
+            </div>
+            <div className="cropper-actions">
+              <button className="btn-outline-dark" onClick={() => setShowCropper(false)}>Cancel</button>
+              <button className="btn-solid-dark" onClick={saveCrop}>Save Crop</button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
