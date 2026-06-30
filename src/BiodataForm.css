@@ -228,6 +228,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /* Photo Upload */
 .photo-upload-container {
   padding-top: 4.5rem; /* Align with first input */
+  position: sticky;
+  top: 2rem;
+  align-self: start;
 }
 
 .photo-upload-box {
