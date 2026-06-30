@@ -90,13 +90,55 @@
   flex-direction: column;
 }
 
+.form-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
 .form-label {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--accent-gold-dark);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+
+.form-field-actions {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.form-group:hover .form-field-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  color: var(--accent-gold-dark);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.action-btn:hover:not(:disabled) {
+  background-color: #f1f5f9;
+  color: var(--bg-primary);
+}
+
+.action-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.action-remove:hover:not(:disabled) {
+  color: #ef4444;
+  background-color: #fee2e2;
 }
 
 .form-input {

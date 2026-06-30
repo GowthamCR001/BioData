@@ -1,7 +1,116 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './BiodataForm.css';
 
+const initialPersonalFields = [
+  { id: 'p1', label: 'Name', type: 'text', placeholder: 'Enter Name' },
+  { id: 'p2', label: 'Date of Birth', type: 'text', placeholder: 'dd-mm-yyyy', icon: '📅' },
+  { id: 'p3', label: 'Place of Birth', type: 'text', placeholder: 'Enter Place of Birth' },
+  { id: 'p4', label: 'Rashi', type: 'select', options: ['Aries (Mesha)', 'Taurus (Vrishabha)'], placeholder: 'Select Rashi' },
+  { id: 'p5', label: 'Time of Birth', type: 'text', placeholder: '--:--', icon: '🕒' },
+  { id: 'p6', label: 'Nakshatra', type: 'text', placeholder: 'Enter Nakshatra' },
+  { id: 'p7', label: 'Religion/Caste', type: 'text', placeholder: 'Enter Religion/Caste' },
+  { id: 'p8', label: 'Complexion', type: 'select', options: ['Fair', 'Wheatish', 'Dark'], placeholder: 'Select Complexion' },
+  { id: 'p9', label: 'Height', type: 'select', options: ['5\' 0"', '5\' 5"'], placeholder: 'Select Height' },
+  { id: 'p10', label: 'Gotra', type: 'text', placeholder: 'Enter Gotra' },
+  { id: 'p11', label: 'Languages Known', type: 'text', placeholder: 'Enter Languages Known' },
+  { id: 'p12', label: 'Qualification', type: 'text', placeholder: 'Enter Qualification' },
+  { id: 'p13', label: 'Occupation', type: 'text', placeholder: 'Enter Occupation' },
+  { id: 'p14', label: 'Income', type: 'text', placeholder: 'Enter Income' },
+];
+
+const initialFamilyFields = [
+  { id: 'f1', label: 'Fathers Name', type: 'text', placeholder: 'Enter Fathers Name' },
+  { id: 'f2', label: 'Fathers Occupation', type: 'text', placeholder: 'Enter Fathers Occupation' },
+  { id: 'f3', label: 'Mothers Name', type: 'text', placeholder: 'Enter Mothers Name' },
+  { id: 'f4', label: 'Mothers Occupation', type: 'text', placeholder: 'Enter Mothers Occupation' },
+  { id: 'f5', label: 'Siblings count', type: 'text', placeholder: 'Enter Siblings count' },
+  { id: 'f6', label: 'Sibling Name (Occupation)', type: 'text', placeholder: 'Enter Sibling Name (Occupation)' },
+];
+
+const initialContactFields = [
+  { id: 'c1', label: 'Contact Person', type: 'text', placeholder: 'Enter Contact Person' },
+  { id: 'c2', label: 'Contact Number', type: 'text', placeholder: 'Enter Contact Number' },
+  { id: 'c3', label: 'Email ID', type: 'text', placeholder: 'Enter Email ID' },
+  { id: 'c4', label: 'Residential Address', type: 'text', placeholder: 'Enter Residential Address' },
+];
+
 function BiodataForm() {
+  const [personalFields, setPersonalFields] = useState(initialPersonalFields);
+  const [familyFields, setFamilyFields] = useState(initialFamilyFields);
+  const [contactFields, setContactFields] = useState(initialContactFields);
+
+  const moveField = (fields, setFields, index, direction) => {
+    if (direction === 'up' && index > 0) {
+      const newFields = [...fields];
+      [newFields[index - 1], newFields[index]] = [newFields[index], newFields[index - 1]];
+      setFields(newFields);
+    } else if (direction === 'down' && index < fields.length - 1) {
+      const newFields = [...fields];
+      [newFields[index + 1], newFields[index]] = [newFields[index], newFields[index + 1]];
+      setFields(newFields);
+    }
+  };
+
+  const removeField = (fields, setFields, id) => {
+    setFields(fields.filter(field => field.id !== id));
+  };
+
+  const renderField = (field, index, fields, setFields) => {
+    return (
+      <motion.div 
+        key={field.id} 
+        layout
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+        className="form-group"
+      >
+        <div className="form-label-row">
+          <label className="form-label">{field.label}</label>
+          <div className="form-field-actions">
+            <button 
+              type="button" 
+              className="action-btn" 
+              onClick={() => moveField(fields, setFields, index, 'up')}
+              disabled={index === 0}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            </button>
+            <button 
+              type="button" 
+              className="action-btn" 
+              onClick={() => moveField(fields, setFields, index, 'down')}
+              disabled={index === fields.length - 1}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <button 
+              type="button" 
+              className="action-btn action-remove" 
+              onClick={() => removeField(fields, setFields, field.id)}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+        </div>
+
+        {field.type === 'select' ? (
+          <select className="form-input" defaultValue="">
+            <option value="" disabled>{field.placeholder}</option>
+            {field.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+          </select>
+        ) : (
+          <div className={field.icon ? "input-with-icon" : ""}>
+            <input type="text" className="form-input" placeholder={field.placeholder} />
+            {field.icon && <span className="input-icon">{field.icon}</span>}
+          </div>
+        )}
+      </motion.div>
+    );
+  };
+
   return (
     <section className="form-section-wrapper" id="biodata-form">
       <div className="container">
@@ -20,160 +129,28 @@ function BiodataForm() {
               {/* Personal Details */}
               <div className="form-section">
                 <h3 className="section-title">Personal Details</h3>
-                
-                <div className="form-group">
-                  <label className="form-label">Name</label>
-                  <input type="text" className="form-input" placeholder="Enter Name" />
-                </div>
-                
-                <div className="form-group">
-                  <label className="form-label">Date of Birth</label>
-                  <div className="input-with-icon">
-                    <input type="text" className="form-input" placeholder="dd-mm-yyyy" />
-                    <span className="input-icon">📅</span>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Place of Birth</label>
-                  <input type="text" className="form-input" placeholder="Enter Place of Birth" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Rashi</label>
-                  <select className="form-input">
-                    <option value="" disabled selected>Select Rashi</option>
-                    <option value="aries">Aries (Mesha)</option>
-                    <option value="taurus">Taurus (Vrishabha)</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Time of Birth</label>
-                  <div className="input-with-icon">
-                    <input type="text" className="form-input" placeholder="--:--" />
-                    <span className="input-icon">🕒</span>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Nakshatra</label>
-                  <input type="text" className="form-input" placeholder="Enter Nakshatra" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Religion/Caste</label>
-                  <input type="text" className="form-input" placeholder="Enter Religion/Caste" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Complexion</label>
-                  <select className="form-input">
-                    <option value="" disabled selected>Select Complexion</option>
-                    <option value="fair">Fair</option>
-                    <option value="wheatish">Wheatish</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Height</label>
-                  <select className="form-input">
-                    <option value="" disabled selected>Select Height</option>
-                    <option value="5-0">5' 0"</option>
-                    <option value="5-5">5' 5"</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Gotra</label>
-                  <input type="text" className="form-input" placeholder="Enter Gotra" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Languages Known</label>
-                  <input type="text" className="form-input" placeholder="Enter Languages Known" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Qualification</label>
-                  <input type="text" className="form-input" placeholder="Enter Qualification" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Occupation</label>
-                  <input type="text" className="form-input" placeholder="Enter Occupation" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Income</label>
-                  <input type="text" className="form-input" placeholder="Enter Income" />
-                </div>
-
-                <button className="btn-add-field">+ Add another field</button>
+                <AnimatePresence>
+                  {personalFields.map((field, index) => renderField(field, index, personalFields, setPersonalFields))}
+                </AnimatePresence>
+                <button className="btn-add-field" type="button">+ Add another field</button>
               </div>
 
               {/* Family Details */}
               <div className="form-section">
                 <h3 className="section-title">Family Details</h3>
-                
-                <div className="form-group">
-                  <label className="form-label">Fathers Name</label>
-                  <input type="text" className="form-input" placeholder="Enter Fathers Name" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Fathers Occupation</label>
-                  <input type="text" className="form-input" placeholder="Enter Fathers Occupation" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Mothers Name</label>
-                  <input type="text" className="form-input" placeholder="Enter Mothers Name" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Mothers Occupation</label>
-                  <input type="text" className="form-input" placeholder="Enter Mothers Occupation" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Siblings count</label>
-                  <input type="text" className="form-input" placeholder="Enter Siblings count" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Sibling Name (Occupation)</label>
-                  <input type="text" className="form-input" placeholder="Enter Sibling Name (Occupation)" />
-                </div>
-
-                <button className="btn-add-field">+ Add another field</button>
+                <AnimatePresence>
+                  {familyFields.map((field, index) => renderField(field, index, familyFields, setFamilyFields))}
+                </AnimatePresence>
+                <button className="btn-add-field" type="button">+ Add another field</button>
               </div>
 
               {/* Contact Details */}
               <div className="form-section">
                 <h3 className="section-title">Contact Details</h3>
-                
-                <div className="form-group">
-                  <label className="form-label">Contact Person</label>
-                  <input type="text" className="form-input" placeholder="Enter Contact Person" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Contact Number</label>
-                  <input type="text" className="form-input" placeholder="Enter Contact Number" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Email ID</label>
-                  <input type="text" className="form-input" placeholder="Enter Email ID" />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Residential Address</label>
-                  <input type="text" className="form-input" placeholder="Enter Residential Address" />
-                </div>
-
-                <button className="btn-add-field">+ Add another field</button>
+                <AnimatePresence>
+                  {contactFields.map((field, index) => renderField(field, index, contactFields, setContactFields))}
+                </AnimatePresence>
+                <button className="btn-add-field" type="button">+ Add another field</button>
               </div>
 
             </div>
@@ -190,8 +167,8 @@ function BiodataForm() {
           </div>
 
           <div className="form-actions">
-            <button className="btn-outline-dark">Reset Form</button>
-            <button className="btn-solid-dark">Choose a Template</button>
+            <button className="btn-outline-dark" type="button">Reset Form</button>
+            <button className="btn-solid-dark" type="button">Choose a Template</button>
           </div>
 
         </div>
