@@ -57,6 +57,16 @@ function BiodataForm() {
     setFields(fields.filter(field => field.id !== id));
   };
 
+  const addField = (fields, setFields, prefix) => {
+    const newId = `${prefix}${Date.now()}`;
+    const newLabel = `FIELD ${fields.length + 1}`;
+    setFields([...fields, { id: newId, label: newLabel, type: 'text', placeholder: `Enter ${newLabel}` }]);
+  };
+
+  const updateFieldLabel = (fields, setFields, id, newLabel) => {
+    setFields(fields.map(f => f.id === id ? { ...f, label: newLabel } : f));
+  };
+
   const renderField = (field, index, fields, setFields) => {
     return (
       <motion.div 
@@ -69,7 +79,12 @@ function BiodataForm() {
         className="form-group"
       >
         <div className="form-label-row">
-          <label className="form-label">{field.label}</label>
+          <input 
+            type="text"
+            className="form-label-input" 
+            value={field.label} 
+            onChange={(e) => updateFieldLabel(fields, setFields, field.id, e.target.value)}
+          />
           <div className="form-field-actions">
             <button 
               type="button" 
@@ -130,7 +145,7 @@ function BiodataForm() {
                 <AnimatePresence>
                   {personalFields.map((field, index) => renderField(field, index, personalFields, setPersonalFields))}
                 </AnimatePresence>
-                <button className="btn-add-field" type="button">+ Add another field</button>
+                <button className="btn-add-field" type="button" onClick={() => addField(personalFields, setPersonalFields, 'p')}>+ Add another field</button>
               </div>
 
               {/* Family Details */}
@@ -139,7 +154,7 @@ function BiodataForm() {
                 <AnimatePresence>
                   {familyFields.map((field, index) => renderField(field, index, familyFields, setFamilyFields))}
                 </AnimatePresence>
-                <button className="btn-add-field" type="button">+ Add another field</button>
+                <button className="btn-add-field" type="button" onClick={() => addField(familyFields, setFamilyFields, 'f')}>+ Add another field</button>
               </div>
 
               {/* Contact Details */}
@@ -148,7 +163,7 @@ function BiodataForm() {
                 <AnimatePresence>
                   {contactFields.map((field, index) => renderField(field, index, contactFields, setContactFields))}
                 </AnimatePresence>
-                <button className="btn-add-field" type="button">+ Add another field</button>
+                <button className="btn-add-field" type="button" onClick={() => addField(contactFields, setContactFields, 'c')}>+ Add another field</button>
               </div>
 
             </div>
