@@ -58,8 +58,20 @@ function BiodataForm() {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [resetKey, setResetKey] = useState(0);
 
   const fileInputRef = useRef(null);
+
+  const handleReset = () => {
+    setResetKey(prev => prev + 1);
+    setPhotoUrl(null);
+    setRawPhotoUrl(null);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+    
+    setPersonalFields(initialPersonalFields);
+    setFamilyFields(initialFamilyFields);
+    setContactFields(initialContactFields);
+  };
 
   const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
@@ -192,7 +204,7 @@ function BiodataForm() {
         </div>
 
         <div className="form-card">
-          <div className="form-layout">
+          <div className="form-layout" key={resetKey}>
             
             <div className="form-fields">
               {/* Personal Details */}
@@ -252,7 +264,7 @@ function BiodataForm() {
           </div>
 
           <div className="form-actions">
-            <button className="btn-outline-dark" type="button">Reset Form</button>
+            <button className="btn-outline-dark" type="button" onClick={handleReset}>Reset Form</button>
             <button className="btn-solid-dark" type="button">Choose a Template</button>
           </div>
 
