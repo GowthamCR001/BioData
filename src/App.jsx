@@ -5,6 +5,7 @@ import TemplatesSection from './TemplatesSection'
 import HowItWorksSection from './HowItWorksSection'
 import AnatomySection from './AnatomySection'
 import PrivacySection from './PrivacySection'
+import GuideSection from './GuideSection'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,6 +77,7 @@ function App() {
       <HowItWorksSection />
       <AnatomySection />
       <PrivacySection />
+      <GuideSection />
     </div>
   )
 }

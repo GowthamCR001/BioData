@@ -1,0 +1,181 @@
+.guide-section {
+  background-color: #FDFBF7;
+  padding: 6rem 0;
+  font-family: var(--font-sans);
+  color: #475569;
+}
+
+.guide-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+}
+
+.guide-eyebrow {
+  font-family: 'Great Vibes', cursive, var(--font-serif);
+  font-size: 2.5rem;
+  color: var(--accent-gold-dark);
+  margin-bottom: 0.5rem;
+}
+
+.guide-title {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: #451a21; /* Deep maroon */
+  line-height: 1.2;
+}
+
+.guide-highlight-box {
+  background-color: #ffffff;
+  border-left: 4px solid var(--accent-gold-dark);
+  border-radius: 4px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+  margin-bottom: 5rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.highlight-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #451a21;
+  margin-bottom: 1.5rem;
+}
+
+.highlight-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.highlight-text:last-child {
+  margin-bottom: 0;
+}
+
+.highlight-text.muted {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.guide-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-subtitle {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #451a21;
+  margin-bottom: 2rem;
+}
+
+.guide-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+.guide-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-list li {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.card-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 4px;
+  height: 4px;
+  background-color: var(--accent-gold-dark);
+}
+
+.guide-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem 3rem;
+  margin-bottom: 4rem;
+}
+
+.guide-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-text-block.full-width {
+  grid-column: 1 / -1;
+}
+
+.block-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #451a21;
+  margin-bottom: 1rem;
+}
+
+.block-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #475569;
+}
+
+.guide-link {
+  color: #451a21;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.guide-link:hover {
+  color: var(--accent-gold-dark);
+}
+
+@media (max-width: 900px) {
+  .guide-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .guide-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .guide-title {
+    font-size: 2.5rem;
+  }
+}
