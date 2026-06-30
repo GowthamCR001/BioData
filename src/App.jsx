@@ -7,6 +7,7 @@ import AnatomySection from './AnatomySection'
 import PrivacySection from './PrivacySection'
 import GuideSection from './GuideSection'
 import ComparisonSection from './ComparisonSection'
+import TestimonialsSection from './TestimonialsSection'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -80,6 +81,7 @@ function App() {
       <PrivacySection />
       <GuideSection />
       <ComparisonSection />
+      <TestimonialsSection />
     </div>
   )
 }
