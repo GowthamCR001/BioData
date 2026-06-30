@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CustomDropdown from './CustomDropdown';
 import './BiodataForm.css';
@@ -50,6 +50,22 @@ function BiodataForm() {
   const [personalFields, setPersonalFields] = useState(initialPersonalFields);
   const [familyFields, setFamilyFields] = useState(initialFamilyFields);
   const [contactFields, setContactFields] = useState(initialContactFields);
+  const [photoUrl, setPhotoUrl] = useState(null);
+  const fileInputRef = useRef(null);
+
+  const handlePhotoUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setPhotoUrl(url);
+    }
+  };
+
+  const triggerFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   const moveField = (fields, setFields, index, direction) => {
     if (direction === 'up' && index > 0) {
@@ -180,10 +196,23 @@ function BiodataForm() {
 
             {/* Photo Upload Sidebar */}
             <div className="photo-upload-container">
-              <div className="photo-upload-box">
-                <div className="upload-icon">📎</div>
-                <div className="upload-text">Add Your Photo</div>
-                <div className="upload-hint">3:4 portrait, up to 3MB</div>
+              <input 
+                type="file" 
+                accept="image/*" 
+                ref={fileInputRef} 
+                style={{ display: 'none' }} 
+                onChange={handlePhotoUpload} 
+              />
+              <div className="photo-upload-box" onClick={triggerFileInput}>
+                {photoUrl ? (
+                  <img src={photoUrl} alt="Uploaded profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ) : (
+                  <>
+                    <div className="upload-icon">📎</div>
+                    <div className="upload-text">Add Your Photo</div>
+                    <div className="upload-hint">3:4 portrait, up to 3MB</div>
+                  </>
+                )}
               </div>
             </div>
 
