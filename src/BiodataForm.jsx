@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CustomDropdown from './CustomDropdown';
 import './BiodataForm.css';
 
 const initialPersonalFields = [
@@ -97,10 +98,7 @@ function BiodataForm() {
         </div>
 
         {field.type === 'select' ? (
-          <select className="form-input" defaultValue="">
-            <option value="" disabled>{field.placeholder}</option>
-            {field.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
-          </select>
+          <CustomDropdown options={field.options} placeholder={field.placeholder} />
         ) : (
           <div className={field.icon ? "input-with-icon" : ""}>
             <input type={field.type || 'text'} className="form-input" placeholder={field.placeholder} />
