@@ -4,6 +4,7 @@ import BiodataForm from './BiodataForm'
 import TemplatesSection from './TemplatesSection'
 import HowItWorksSection from './HowItWorksSection'
 import AnatomySection from './AnatomySection'
+import PrivacySection from './PrivacySection'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,6 +75,7 @@ function App() {
       <TemplatesSection />
       <HowItWorksSection />
       <AnatomySection />
+      <PrivacySection />
     </div>
   )
 }
