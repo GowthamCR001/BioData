@@ -4,10 +4,10 @@ import './BiodataForm.css';
 
 const initialPersonalFields = [
   { id: 'p1', label: 'Name', type: 'text', placeholder: 'Enter Name' },
-  { id: 'p2', label: 'Date of Birth', type: 'text', placeholder: 'dd-mm-yyyy', icon: '📅' },
+  { id: 'p2', label: 'Date of Birth', type: 'date', placeholder: 'dd-mm-yyyy' },
   { id: 'p3', label: 'Place of Birth', type: 'text', placeholder: 'Enter Place of Birth' },
   { id: 'p4', label: 'Rashi', type: 'select', options: ['Aries (Mesha)', 'Taurus (Vrishabha)'], placeholder: 'Select Rashi' },
-  { id: 'p5', label: 'Time of Birth', type: 'text', placeholder: '--:--', icon: '🕒' },
+  { id: 'p5', label: 'Time of Birth', type: 'time', placeholder: '--:--' },
   { id: 'p6', label: 'Nakshatra', type: 'text', placeholder: 'Enter Nakshatra' },
   { id: 'p7', label: 'Religion/Caste', type: 'text', placeholder: 'Enter Religion/Caste' },
   { id: 'p8', label: 'Complexion', type: 'select', options: ['Fair', 'Wheatish', 'Dark'], placeholder: 'Select Complexion' },
@@ -103,7 +103,7 @@ function BiodataForm() {
           </select>
         ) : (
           <div className={field.icon ? "input-with-icon" : ""}>
-            <input type="text" className="form-input" placeholder={field.placeholder} />
+            <input type={field.type || 'text'} className="form-input" placeholder={field.placeholder} />
             {field.icon && <span className="input-icon">{field.icon}</span>}
           </div>
         )}

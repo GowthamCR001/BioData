@@ -162,6 +162,13 @@
   border-bottom-color: var(--accent-gold-dark);
 }
 
+/* Force native date/time picker icons to be solid black */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: brightness(0) saturate(100%);
+}
+
 .input-with-icon {
   position: relative;
 }
