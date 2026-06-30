@@ -6,10 +6,27 @@
 
 /* Navigation */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent;
+  transition: all 0.3s ease;
+  padding: 1.5rem 0;
+}
+
+.navbar.scrolled {
+  background-color: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-lg);
+  padding: 1rem 0;
+}
+
+.navbar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 0;
 }
 
 .logo {
@@ -62,7 +79,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  padding: 4rem 0 6rem;
+  padding: 8rem 0 6rem;
 }
 
 .hero-content {

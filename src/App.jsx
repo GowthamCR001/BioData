@@ -1,12 +1,22 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import './App.css'
 import BiodataForm from './BiodataForm'
 
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="app">
-      <div className="container">
-        <header className="navbar">
+      <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="container navbar-container">
           <div className="logo">
             <span className="logo-icon">■</span> Biodata for Marriage
           </div>
@@ -18,8 +28,10 @@ function App() {
             <a href="#faq" className="nav-link">FAQ</a>
             <button className="btn-primary">Create My Biodata</button>
           </nav>
-        </header>
+        </div>
+      </header>
 
+      <div className="container">
         <main className="hero">
           <div className="hero-content">
             <div className="hero-text">
