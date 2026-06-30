@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import BiodataForm from './BiodataForm'
 
 function App() {
   return (
@@ -54,6 +55,8 @@ function App() {
           </div>
         </main>
       </div>
+      
+      <BiodataForm />
     </div>
   )
 }
