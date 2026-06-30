@@ -106,7 +106,7 @@
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
   color: var(--text-main);
 }
@@ -206,23 +206,23 @@
     text-align: center;
     gap: 3rem;
   }
-  
+
   .hero-text {
     margin: 0 auto;
   }
-  
+
   .eyebrow {
     justify-content: center;
   }
-  
+
   .hero-cta {
     justify-content: center;
   }
-  
+
   .hero-title {
     font-size: 3rem;
   }
-  
+
   .badge-private {
     right: 0;
   }
@@ -232,16 +232,16 @@
   .nav-links {
     display: none;
   }
-  
+
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .hero-cta {
     flex-direction: column;
     width: 100%;
   }
-  
+
   .hero-cta button {
     width: 100%;
   }

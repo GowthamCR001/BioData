@@ -3,6 +3,7 @@ import './App.css'
 import BiodataForm from './BiodataForm'
 import TemplatesSection from './TemplatesSection'
 import HowItWorksSection from './HowItWorksSection'
+import AnatomySection from './AnatomySection'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -72,6 +73,7 @@ function App() {
       <BiodataForm />
       <TemplatesSection />
       <HowItWorksSection />
+      <AnatomySection />
     </div>
   )
 }
