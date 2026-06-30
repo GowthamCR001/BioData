@@ -6,7 +6,7 @@ const initialPersonalFields = [
   { id: 'p1', label: 'Name', type: 'text', placeholder: 'Enter Name' },
   { id: 'p2', label: 'Date of Birth', type: 'date', placeholder: 'dd-mm-yyyy' },
   { id: 'p3', label: 'Place of Birth', type: 'text', placeholder: 'Enter Place of Birth' },
-  { id: 'p4', label: 'Rashi', type: 'select', options: ['Aries (Mesha)', 'Taurus (Vrishabha)'], placeholder: 'Select Rashi' },
+  { id: 'p4', label: 'Rashi', type: 'select', options: ['Mesh (Aries)', 'Varishabha (Taurus)', 'Mithuna (Gemini)', 'Karka (Cancer)', 'Simha (Leo)', 'Kanya (Virgo)', 'Tula (Libra)', 'Vrishchika (Scorpio)', 'Dhanu (Sagittarius)', 'Makara (Capricorn)', 'Kumbha (Aquarius)', 'Meena (Pisces)'], placeholder: 'Select Rashi' },
   { id: 'p5', label: 'Time of Birth', type: 'time', placeholder: '--:--' },
   { id: 'p6', label: 'Nakshatra', type: 'text', placeholder: 'Enter Nakshatra' },
   { id: 'p7', label: 'Religion/Caste', type: 'text', placeholder: 'Enter Religion/Caste' },
