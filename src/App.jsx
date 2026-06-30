@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css'
 import BiodataForm from './BiodataForm'
 import TemplatesSection from './TemplatesSection'
+import HowItWorksSection from './HowItWorksSection'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -70,6 +71,7 @@ function App() {
 
       <BiodataForm />
       <TemplatesSection />
+      <HowItWorksSection />
     </div>
   )
 }
