@@ -3,6 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import CustomDropdown from './CustomDropdown';
 import './BiodataForm.css';
 
+const generateHeights = () => {
+  const heights = [];
+  for (let feet = 3; feet <= 7; feet++) {
+    for (let inches = 0; inches <= 11; inches++) {
+      heights.push(`${feet}' ${inches}"`);
+    }
+  }
+  return heights;
+};
+
 const initialPersonalFields = [
   { id: 'p1', label: 'Name', type: 'text', placeholder: 'Enter Name' },
   { id: 'p2', label: 'Date of Birth', type: 'date', placeholder: 'dd-mm-yyyy' },
@@ -12,7 +22,7 @@ const initialPersonalFields = [
   { id: 'p6', label: 'Nakshatra', type: 'text', placeholder: 'Enter Nakshatra' },
   { id: 'p7', label: 'Religion/Caste', type: 'text', placeholder: 'Enter Religion/Caste' },
   { id: 'p8', label: 'Complexion', type: 'select', options: ['Fair', 'Wheatish', 'Dark'], placeholder: 'Select Complexion' },
-  { id: 'p9', label: 'Height', type: 'select', options: ['5\' 0"', '5\' 5"'], placeholder: 'Select Height' },
+  { id: 'p9', label: 'Height', type: 'select', options: generateHeights(), placeholder: 'Select Height' },
   { id: 'p10', label: 'Gotra', type: 'text', placeholder: 'Enter Gotra' },
   { id: 'p11', label: 'Languages Known', type: 'text', placeholder: 'Enter Languages Known' },
   { id: 'p12', label: 'Qualification', type: 'text', placeholder: 'Enter Qualification' },
