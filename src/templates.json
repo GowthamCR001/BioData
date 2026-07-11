@@ -60,28 +60,10 @@
     "color": "#c8b4c8"
   },
   {
-    "id": 11,
-    "name": "Daisy",
-    "file": "f1 (11).png",
-    "color": "#f0f0f0"
-  },
-  {
     "id": 12,
     "name": "Sunflower",
     "file": "f1 (12).png",
     "color": "#f0f0104"
-  },
-  {
-    "id": 13,
-    "name": "Iris",
-    "file": "f1 (13).png",
-    "color": "#f0b43c"
-  },
-  {
-    "id": 14,
-    "name": "Peony",
-    "file": "f1 (14).png",
-    "color": "#f0f0f0"
   },
   {
     "id": 15,

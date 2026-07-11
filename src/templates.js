@@ -9,10 +9,7 @@ export const templates = [
   { id: 8, name: 'Tulip', file: 'f1 (8).png', color: '#311b92' },
   { id: 9, name: 'Orchid', file: 'f1 (9).png', color: '#4a148c' },
   { id: 10, name: 'Lily', file: 'f1 (10).png', color: '#004d40' },
-  { id: 11, name: 'Daisy', file: 'f1 (11).png', color: '#e65100' },
   { id: 12, name: 'Sunflower', file: 'f1 (12).png', color: '#f57f17' },
-  { id: 13, name: 'Iris', file: 'f1 (13).png', color: '#1a237e' },
-  { id: 14, name: 'Peony', file: 'f1 (14).png', color: '#ad1457' },
   { id: 15, name: 'Dahlia', file: 'f1 (15).png', color: '#bf360c' },
   { id: 16, name: 'Poppy', file: 'f1 (16).png', color: '#c62828' }
 ];
