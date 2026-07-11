@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './BiodataPreview.css';
 
-function BiodataPreview({ template, personalFields, familyFields, contactFields, photoUrl, title, selectedLogo, titleColor }) {
+function BiodataPreview({ template, personalFields, familyFields, contactFields, photoUrl, title, selectedLogo }) {
   const themeColor = template.color;
-  const effectiveTitleColor = titleColor || themeColor;
 
   const renderFieldValue = (field) => {
     const isPlaceholder = field.placeholder.startsWith('Enter ');
@@ -29,7 +28,7 @@ function BiodataPreview({ template, personalFields, familyFields, contactFields,
               />
             )}
             {title && (
-              <h1 className="biodata-main-title" style={{ color: effectiveTitleColor }}>
+              <h1 className="biodata-main-title" style={{ color: themeColor }}>
                 {title}
               </h1>
             )}

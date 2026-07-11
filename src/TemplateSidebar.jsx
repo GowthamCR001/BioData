@@ -3,7 +3,7 @@ import './TemplateSidebar.css';
 
 function TemplateSidebar({ 
   templates, selectedTemplateId, onSelect, onClose, 
-  title, setTitle, titleColor, setTitleColor, selectedLogo, setSelectedLogo 
+  title, setTitle, selectedLogo, setSelectedLogo 
 }) {
   return (
     <div className="template-sidebar-wrapper">
@@ -16,23 +16,13 @@ function TemplateSidebar({
         <div className="template-customisation-section">
           <div className="customisation-field">
             <label>Biodata Title</label>
-            <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-              <input 
-                type="text" 
-                value={title} 
-                onChange={(e) => setTitle(e.target.value)} 
-                placeholder="Enter title"
-                className="customisation-input"
-                style={{ flex: 1 }}
-              />
-              <input 
-                type="color"
-                value={titleColor || "#800000"}
-                onChange={(e) => setTitleColor(e.target.value)}
-                style={{ width: '38px', height: '38px', padding: '0', border: '1px solid #ccc', cursor: 'pointer', borderRadius: '4px' }}
-                title="Choose Title Color"
-              />
-            </div>
+            <input 
+              type="text" 
+              value={title} 
+              onChange={(e) => setTitle(e.target.value)} 
+              placeholder="Enter title"
+              className="customisation-input"
+            />
           </div>
           
           <div className="customisation-field">
