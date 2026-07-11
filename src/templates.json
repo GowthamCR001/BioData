@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Chandan",
+    "file": "f1 (1).png",
+    "color": "#f0dcc8"
+  },
+  {
+    "id": 2,
+    "name": "Marigold",
+    "file": "f1 (2).png",
+    "color": "#104f0f0"
+  },
+  {
+    "id": 3,
+    "name": "Sindoor",
+    "file": "f1 (3).png",
+    "color": "#dcf0104"
+  },
+  {
+    "id": 4,
+    "name": "Mayur",
+    "file": "f1 (4).png",
+    "color": "#dcf0f0"
+  },
+  {
+    "id": 5,
+    "name": "Lotus",
+    "file": "f1 (5).png",
+    "color": "#104f0f0"
+  },
+  {
+    "id": 6,
+    "name": "Rose",
+    "file": "f1 (6).png",
+    "color": "#104f0f0"
+  },
+  {
+    "id": 7,
+    "name": "Jasmine",
+    "file": "f1 (7).png",
+    "color": "#dcb43c"
+  },
+  {
+    "id": 8,
+    "name": "Tulip",
+    "file": "f1 (8).png",
+    "color": "#f0f0f0"
+  },
+  {
+    "id": 9,
+    "name": "Orchid",
+    "file": "f1 (9).png",
+    "color": "#f02878"
+  },
+  {
+    "id": 10,
+    "name": "Lily",
+    "file": "f1 (10).png",
+    "color": "#c8b4c8"
+  },
+  {
+    "id": 11,
+    "name": "Daisy",
+    "file": "f1 (11).png",
+    "color": "#f0f0f0"
+  },
+  {
+    "id": 12,
+    "name": "Sunflower",
+    "file": "f1 (12).png",
+    "color": "#f0f0104"
+  },
+  {
+    "id": 13,
+    "name": "Iris",
+    "file": "f1 (13).png",
+    "color": "#f0b43c"
+  },
+  {
+    "id": 14,
+    "name": "Peony",
+    "file": "f1 (14).png",
+    "color": "#f0f0f0"
+  },
+  {
+    "id": 15,
+    "name": "Dahlia",
+    "file": "f1 (15).png",
+    "color": "#787878"
+  },
+  {
+    "id": 16,
+    "name": "Poppy",
+    "file": "f1 (16).png",
+    "color": "#f0f0f0"
+  }
+]

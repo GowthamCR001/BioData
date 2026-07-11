@@ -1,0 +1,270 @@
+.template-sidebar-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.template-sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.template-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.template-sidebar-header h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.btn-close-modal {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0.25rem;
+}
+
+.btn-close-modal:hover {
+  color: #111827;
+}
+
+.template-customisation-section {
+  padding: 1.5rem;
+  background-color: #fcfcfc;
+}
+
+.customisation-field {
+  margin-bottom: 1.5rem;
+}
+
+.customisation-field label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.customisation-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #111827;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+.customisation-input:focus {
+  outline: none;
+  border-color: #ea580c;
+  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.1);
+}
+
+.religious-symbol-selector {
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.selected-symbol-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.selected-symbol-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.selected-symbol-img-container {
+  width: 70px;
+  height: 70px;
+  border: 1px solid #f3f4f6;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding: 5px;
+}
+
+.selected-symbol-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.btn-remove-symbol {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.35rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-remove-symbol:hover {
+  background-color: #dc2626;
+}
+
+.symbol-instruction {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.symbol-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.symbol-item {
+  aspect-ratio: 1;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+}
+
+.symbol-item:hover {
+  border-color: #d1d5db;
+}
+
+.symbol-item.active {
+  border: 2px solid #be185d;
+  background-color: #fdf2f8;
+}
+
+.symbol-item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.symbol-check {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #be185d;
+  color: white;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.template-grid {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.template-thumbnail-card {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.template-thumbnail-card:hover {
+  transform: translateY(-2px);
+}
+
+.template-thumbnail-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.414; /* A4 proportion */
+  background: #f9fafb;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.template-thumbnail-card.selected .template-thumbnail-image-container {
+  border-color: #ef4444; /* red outline for selected */
+}
+
+.template-thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.template-selected-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.checkmark {
+  color: #10b981; /* Green checkmark */
+  font-weight: bold;
+}
+
+.template-thumbnail-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.template-sidebar-footer {
+  padding: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.btn-download {
+  width: 100%;
+  background-color: #ea580c; /* Orange-red like in the screenshot */
+  color: white;
+  border: none;
+  padding: 0.75rem 0;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-download:hover {
+  background-color: #c2410c;
+}

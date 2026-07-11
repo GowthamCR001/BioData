@@ -1,0 +1,13 @@
+/* Header.css - Styles are mostly in App.css, but we can add specific ones here if needed.
+   Currently, we rely on the existing .navbar and .nav-links styles from App.css.
+   We just ensure the logo Link behaves like the original div.logo */
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+}

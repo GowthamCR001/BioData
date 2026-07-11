@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Cropper from 'react-easy-crop';
 import CustomDropdown from './CustomDropdown';
 import { getCroppedImg } from './cropImage';
+import TemplateSelectionModal from './TemplateSelectionModal';
 import './BiodataForm.css';
 
 const generateHeights = () => {
@@ -55,6 +56,7 @@ function BiodataForm() {
   const [photoUrl, setPhotoUrl] = useState(null);
   const [rawPhotoUrl, setRawPhotoUrl] = useState(null);
   const [showCropper, setShowCropper] = useState(false);
+  const [showTemplateModal, setShowTemplateModal] = useState(false);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
@@ -265,7 +267,7 @@ function BiodataForm() {
 
           <div className="form-actions">
             <button className="btn-outline-dark" type="button" onClick={handleReset}>Reset Form</button>
-            <button className="btn-solid-dark" type="button">Choose a Template</button>
+            <button className="btn-solid-dark" type="button" onClick={() => setShowTemplateModal(true)}>Choose a Template</button>
           </div>
 
         </div>
@@ -291,6 +293,16 @@ function BiodataForm() {
             </div>
           </div>
         </div>
+      )}
+
+      {showTemplateModal && (
+        <TemplateSelectionModal 
+          onClose={() => setShowTemplateModal(false)}
+          personalFields={personalFields}
+          familyFields={familyFields}
+          contactFields={contactFields}
+          photoUrl={photoUrl}
+        />
       )}
     </section>
   );

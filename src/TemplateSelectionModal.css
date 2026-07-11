@@ -1,0 +1,49 @@
+.template-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f3f4f6; /* light gray background like in screenshot */
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.template-modal-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: #e5e7eb;
+}
+
+.template-preview-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+.template-sidebar-panel {
+  width: 350px;
+  background-color: #fff;
+  border-left: 1px solid #e5e7eb;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .template-modal-container {
+    flex-direction: column;
+  }
+  .template-sidebar-panel {
+    width: 100%;
+    height: 40vh;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
+}

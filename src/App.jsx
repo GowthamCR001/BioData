@@ -1,89 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import './App.css'
-import BiodataForm from './BiodataForm'
-import TemplatesSection from './TemplatesSection'
-import HowItWorksSection from './HowItWorksSection'
-import AnatomySection from './AnatomySection'
-import PrivacySection from './PrivacySection'
-import GuideSection from './GuideSection'
-import ComparisonSection from './ComparisonSection'
-import TestimonialsSection from './TestimonialsSection'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
+import Header from './Header';
+import Footer from './Footer';
+import BackToTop from './BackToTop';
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
+import ContactPage from './ContactPage';
+import PrivacyPolicyPage from './PrivacyPolicyPage';
+import TermsOfServicePage from './TermsOfServicePage';
+import RefundPolicyPage from './RefundPolicyPage';
 
 function App() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="app">
-      <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="container navbar-container">
-          <div className="logo">
-            <span className="logo-icon">■</span> Biodata for Marriage
-          </div>
-
-          <nav className="nav-links">
-            <a href="#templates" className="nav-link">Templates</a>
-            <a href="#how-it-works" className="nav-link">How it works</a>
-            <a href="#guide" className="nav-link">Biodata guide</a>
-            <a href="#faq" className="nav-link">FAQ</a>
-            <button className="btn-primary">Create My Biodata</button>
-          </nav>
-        </div>
-      </header>
-
-      <div className="container">
-        <main className="hero">
-          <div className="hero-content">
-            <div className="hero-text">
-              <div className="eyebrow">
-                <span>•</span>
-                <span>India's Privacy-First Marriage Biodata Maker</span>
-              </div>
-
-              <h1 className="hero-title">
-                A <i>beautiful</i><br />
-                biodata for marriage,<br />
-                in two minutes
-              </h1>
-
-              <p className="hero-description">
-                Your biodata is the first thing the other family sees about you, so make it a good one. Fill in your details, pick a design you like, and download your print ready PDF. There is no account to create, and your details stay on your own device.
-              </p>
-
-              <div className="hero-cta">
-                <button className="btn-primary btn-large">Create My Biodata Free</button>
-                <button className="btn-outline">See the 21 designs</button>
-              </div>
-            </div>
-
-            <div className="hero-image">
-              <img src="/biodata-mockup.png" alt="Stacked marriage biodata templates" />
-              <div className="badge-private">
-                100%
-                <span>PRIVATE</span>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-
-      <BiodataForm />
-      <TemplatesSection />
-      <HowItWorksSection />
-      <AnatomySection />
-      <PrivacySection />
-      <GuideSection />
-      <ComparisonSection />
-      <TestimonialsSection />
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsOfServicePage />} />
+        <Route path="/refund" element={<RefundPolicyPage />} />
+      </Routes>
+      <Footer />
+      <BackToTop />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
