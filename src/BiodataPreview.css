@@ -37,7 +37,7 @@
 }
 
 .biodata-main-title {
-  font-size: 26px;
+  font-size: 22px;
   font-weight: bold;
   font-family: 'Georgia', serif;
   margin: 0;
@@ -68,8 +68,8 @@
 }
 
 .biodata-section-title {
-  font-size: 18px;
-  /* Reduced from 24px */
+  font-size: 16px;
+  /* Reduced from 18px */
   font-weight: bold;
   margin-bottom: 15px;
   /* Reduced from 20px */
@@ -84,8 +84,8 @@
   gap: 8px;
   /* Reduced from 12px */
   font-family: 'Arial', sans-serif;
-  font-size: 14px;
-  /* Reduced from 18px */
+  font-size: 12px;
+  /* Reduced from 14px */
   max-width: 65%;
 }
 
