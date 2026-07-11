@@ -19,7 +19,7 @@
 }
 
 .biodata-content-area {
-  padding: 35mm 25mm 25mm 25mm;
+  padding: 35mm 25mm 25mm 35mm;
   /* Increased from 30mm to push content down slightly */
   position: relative;
 }

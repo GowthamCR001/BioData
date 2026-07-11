@@ -7,6 +7,7 @@ import { templates } from './templates';
 function TemplateSelectionModal({ onClose, personalFields, familyFields, contactFields, photoUrl }) {
   const [selectedTemplateId, setSelectedTemplateId] = useState(1);
   const [title, setTitle] = useState("|| SHREE GANESHAYA NAMAH ||");
+  const [titleColor, setTitleColor] = useState("#800000");
   const [selectedLogo, setSelectedLogo] = useState("");
 
   const selectedTemplate = templates.find(t => t.id === selectedTemplateId) || templates[0];
@@ -22,6 +23,7 @@ function TemplateSelectionModal({ onClose, personalFields, familyFields, contact
             contactFields={contactFields}
             photoUrl={photoUrl}
             title={title}
+            titleColor={titleColor}
             selectedLogo={selectedLogo}
           />
         </div>
@@ -33,6 +35,8 @@ function TemplateSelectionModal({ onClose, personalFields, familyFields, contact
             onClose={onClose}
             title={title}
             setTitle={setTitle}
+            titleColor={titleColor}
+            setTitleColor={setTitleColor}
             selectedLogo={selectedLogo}
             setSelectedLogo={setSelectedLogo}
           />
