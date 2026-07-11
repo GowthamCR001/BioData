@@ -137,6 +137,10 @@ function BiodataForm() {
     setFields(fields.map(f => f.id === id ? { ...f, label: newLabel } : f));
   };
 
+  const updateFieldValue = (fields, setFields, id, newValue) => {
+    setFields(fields.map(f => f.id === id ? { ...f, value: newValue } : f));
+  };
+
   const renderField = (field, index, fields, setFields) => {
     return (
       <motion.div 
@@ -183,10 +187,21 @@ function BiodataForm() {
         </div>
 
         {field.type === 'select' ? (
-          <CustomDropdown options={field.options} placeholder={field.placeholder} />
+          <CustomDropdown 
+            options={field.options} 
+            placeholder={field.placeholder} 
+            value={field.value || ''}
+            onChange={(val) => updateFieldValue(fields, setFields, field.id, val)}
+          />
         ) : (
           <div className={field.icon ? "input-with-icon" : ""}>
-            <input type={field.type || 'text'} className="form-input" placeholder={field.placeholder} />
+            <input 
+              type={field.type || 'text'} 
+              className="form-input" 
+              placeholder={field.placeholder} 
+              value={field.value || ''}
+              onChange={(e) => updateFieldValue(fields, setFields, field.id, e.target.value)}
+            />
             {field.icon && <span className="input-icon">{field.icon}</span>}
           </div>
         )}

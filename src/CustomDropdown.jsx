@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './CustomDropdown.css';
 
-const CustomDropdown = ({ options, placeholder }) => {
+const CustomDropdown = ({ options, placeholder, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState('');
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -22,8 +21,8 @@ const CustomDropdown = ({ options, placeholder }) => {
         className={`dropdown-header ${isOpen ? 'open' : ''}`} 
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className={!selected ? 'placeholder' : ''}>
-          {selected || placeholder}
+        <span className={!value ? 'placeholder' : ''}>
+          {value || placeholder}
         </span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`dropdown-caret ${isOpen ? 'open' : ''}`}>
           <polyline points="6 9 12 15 18 9"></polyline>
@@ -36,9 +35,9 @@ const CustomDropdown = ({ options, placeholder }) => {
             {options.map((opt) => (
               <li 
                 key={opt} 
-                className={`dropdown-item ${selected === opt ? 'selected' : ''}`}
+                className={`dropdown-item ${value === opt ? 'selected' : ''}`}
                 onClick={() => {
-                  setSelected(opt);
+                  onChange(opt);
                   setIsOpen(false);
                 }}
               >
@@ -46,7 +45,7 @@ const CustomDropdown = ({ options, placeholder }) => {
               </li>
             ))}
           </ul>
-          <div className="dropdown-clear" onClick={() => { setSelected(''); setIsOpen(false); }}>
+          <div className="dropdown-clear" onClick={() => { onChange(''); setIsOpen(false); }}>
             Clear selection
           </div>
         </div>

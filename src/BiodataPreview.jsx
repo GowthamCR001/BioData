@@ -5,6 +5,7 @@ function BiodataPreview({ template, personalFields, familyFields, contactFields,
   const themeColor = template.color;
 
   const renderFieldValue = (field) => {
+    if (field.value) return field.value;
     const isPlaceholder = field.placeholder.startsWith('Enter ');
     return isPlaceholder ? field.placeholder.replace('Enter ', '') : (field.placeholder || '-');
   };
