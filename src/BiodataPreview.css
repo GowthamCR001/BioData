@@ -10,7 +10,7 @@
   width: 210mm;
   min-height: 297mm;
   background-color: white;
-  background-size: 90% 90%; /* Reduced from 100% 100% to make designs smaller and avoid text overlap */
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
