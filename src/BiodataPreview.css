@@ -19,7 +19,8 @@
 }
 
 .biodata-content-area {
-  padding: 35mm 25mm 25mm 25mm; /* Increased from 30mm to push content down slightly */
+  padding: 35mm 25mm 25mm 25mm;
+  /* Increased from 30mm to push content down slightly */
   position: relative;
 }
 
@@ -44,7 +45,8 @@
 
 .biodata-photo-container {
   position: absolute;
-  top: 55mm; /* Moved down to stay aligned with Personal Details and avoid overlapping title */
+  top: 70mm;
+  /* Moved down to stay aligned with Personal Details and avoid overlapping title */
   right: 25mm;
   width: 55mm;
   height: 73mm;
@@ -61,13 +63,16 @@
 }
 
 .biodata-section {
-  margin-bottom: 25px; /* Reduced from 35px */
+  margin-bottom: 25px;
+  /* Reduced from 35px */
 }
 
 .biodata-section-title {
-  font-size: 18px; /* Reduced from 24px */
+  font-size: 18px;
+  /* Reduced from 24px */
   font-weight: bold;
-  margin-bottom: 15px; /* Reduced from 20px */
+  margin-bottom: 15px;
+  /* Reduced from 20px */
   text-align: left;
   font-family: 'Arial', sans-serif;
   text-transform: uppercase;
@@ -76,9 +81,11 @@
 .biodata-fields-grid {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Reduced from 12px */
+  gap: 8px;
+  /* Reduced from 12px */
   font-family: 'Arial', sans-serif;
-  font-size: 14px; /* Reduced from 18px */
+  font-size: 14px;
+  /* Reduced from 18px */
   max-width: 65%;
 }
 
@@ -88,13 +95,15 @@
 }
 
 .biodata-field-label {
-  width: 150px; /* Reduced from 220px to bring the colon closer */
+  width: 150px;
+  /* Reduced from 220px to bring the colon closer */
   font-weight: bold;
   flex-shrink: 0;
 }
 
 .biodata-field-separator {
-  margin: 0 10px; /* Reduced from 15px */
+  margin: 0 10px;
+  /* Reduced from 15px */
   font-weight: bold;
 }
 
