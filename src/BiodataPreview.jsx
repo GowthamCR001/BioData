@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './BiodataPreview.css';
 
 function BiodataPreview({ template, personalFields, familyFields, contactFields, photoUrl, title, selectedLogo, innerRef }) {
