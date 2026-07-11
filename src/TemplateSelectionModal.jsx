@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './TemplateSelectionModal.css';
 import BiodataPreview from './BiodataPreview';
 import TemplateSidebar from './TemplateSidebar';
@@ -10,6 +10,13 @@ function TemplateSelectionModal({ onClose, personalFields, familyFields, contact
   const [selectedLogo, setSelectedLogo] = useState("");
 
   const selectedTemplate = templates.find(t => t.id === selectedTemplateId) || templates[0];
+
+  useEffect(() => {
+    document.body.classList.add('modal-open');
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, []);
 
   return (
     <div className="template-modal-overlay">

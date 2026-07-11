@@ -54,3 +54,7 @@
     height: 1.25rem;
   }
 }
+
+body.modal-open .back-to-top {
+  display: none !important;
+}
