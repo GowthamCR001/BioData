@@ -3,7 +3,8 @@ import './TemplateSidebar.css';
 
 function TemplateSidebar({ 
   templates, selectedTemplateId, onSelect, onClose, 
-  title, setTitle, selectedLogo, setSelectedLogo 
+  title, setTitle, selectedLogo, setSelectedLogo,
+  onDownload, isDownloading
 }) {
   return (
     <div className="template-sidebar-wrapper">
@@ -108,7 +109,13 @@ function TemplateSidebar({
       </div>
 
       <div className="template-sidebar-footer">
-        <button className="btn-solid-dark btn-download">Proceed & Download</button>
+        <button 
+          className="btn-solid-dark btn-download" 
+          onClick={onDownload}
+          disabled={isDownloading}
+        >
+          {isDownloading ? 'Generating PDF...' : 'Proceed & Download PDF'}
+        </button>
       </div>
     </div>
   );

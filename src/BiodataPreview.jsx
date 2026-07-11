@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './BiodataPreview.css';
 
-function BiodataPreview({ template, personalFields, familyFields, contactFields, photoUrl, title, selectedLogo }) {
+function BiodataPreview({ template, personalFields, familyFields, contactFields, photoUrl, title, selectedLogo, innerRef }) {
   const themeColor = template.color;
 
   const renderFieldValue = (field) => {
@@ -13,6 +13,7 @@ function BiodataPreview({ template, personalFields, familyFields, contactFields,
     <div className="biodata-preview-wrapper">
       <div 
         className="biodata-a4-page"
+        ref={innerRef}
         style={{
           backgroundImage: `url('/src/assets/template/frame/${template.file}')`,
           color: themeColor
