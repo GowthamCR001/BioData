@@ -17,7 +17,7 @@ function Header() {
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <Link to="/" className="logo">
-          <span className="logo-icon">■</span> Biodata for Marriage
+          <img src="/logo.png" alt="BioData Logo" style={{ width: '32px', height: '32px', marginRight: '8px' }} /> Biodata for Marriage
         </Link>
 
         <nav className="nav-links">
