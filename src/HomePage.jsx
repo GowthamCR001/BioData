@@ -33,8 +33,18 @@ function HomePage() {
               </p>
 
               <div className="hero-cta">
-                <button className="btn-primary btn-large">Create My Biodata Free</button>
-                <button className="btn-outline">See the 21 designs</button>
+                <button 
+                  className="btn-primary btn-large"
+                  onClick={() => document.getElementById('biodata-form')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Create My Biodata Free
+                </button>
+                <button 
+                  className="btn-outline"
+                  onClick={() => document.getElementById('templates')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  See the 21 designs
+                </button>
               </div>
             </div>
 
