@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './BiodataPreview.css';
 
 function BiodataPreview({ template, personalFields, familyFields, contactFields, photoUrl, title, selectedLogo, innerRef }) {
   const themeColor = template.color;
+  const [logoSrc, setLogoSrc] = useState(null);
+
+  useEffect(() => {
+    if (selectedLogo) {
+      const url = `/src/assets/logos/${selectedLogo}`;
+      fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            setLogoSrc(reader.result);
+          };
+          reader.readAsDataURL(blob);
+        })
+        .catch(err => {
+          console.error("Error loading logo:", err);
+          setLogoSrc(url);
+        });
+    } else {
+      setLogoSrc(null);
+    }
+  }, [selectedLogo]);
 
   const renderFieldValue = (field) => {
     if (field.value) return field.value;
@@ -22,11 +44,13 @@ function BiodataPreview({ template, personalFields, familyFields, contactFields,
       >
         <div className="biodata-content-area">
           <div className="biodata-header-section">
-            {selectedLogo && (
+            {logoSrc && (
               <img 
-                src={`/src/assets/logos/${selectedLogo}`} 
+                src={logoSrc} 
                 alt="Religious Logo" 
                 className="biodata-religious-logo" 
+                width="60"
+                height="60"
               />
             )}
             {title && (
