@@ -5,7 +5,6 @@ import HowItWorksSection from './HowItWorksSection'
 import AnatomySection from './AnatomySection'
 import PrivacySection from './PrivacySection'
 import GuideSection from './GuideSection'
-import ComparisonSection from './ComparisonSection'
 import TestimonialsSection from './TestimonialsSection'
 import FaqSection from './FaqSection'
 import CtaSection from './CtaSection'
@@ -65,7 +64,6 @@ function HomePage() {
       <AnatomySection />
       <PrivacySection />
       <GuideSection />
-      <ComparisonSection />
       <TestimonialsSection />
       <FaqSection />
       <CtaSection />
