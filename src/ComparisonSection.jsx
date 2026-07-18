@@ -63,7 +63,6 @@ function ComparisonSection() {
     <section className="comparison-section" id="comparison">
       <div className="container">
         <div className="comparison-header">
-          <div className="comparison-eyebrow">compare fairly</div>
           <h2 className="comparison-title">Why Families Choose This Biodata Maker</h2>
           <p className="comparison-desc">
             You could build a marriage biodata in Canva, wrestle a Word template into shape,
